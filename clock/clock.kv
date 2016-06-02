@@ -19,10 +19,14 @@ BoxLayout:
         size_hint: (1, None)
 
         RobotoButton:
+            id: start_stop
             text: 'Start'
+            on_press: app.start_stop()
 
         RobotoButton:
+            id: reset
             text: 'Reset'
+            on_press: app.reset()
             background_normal: 'pics/red_button_normal.png'
             background_down: 'pics/red_button_down.png'
 
