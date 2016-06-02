@@ -1,8 +1,6 @@
 from kivy.app import App
 from kivy.clock import Clock
 from kivy.core.text import LabelBase
-from kivy.core.window import Window
-from kivy.utils import get_color_from_hex
 # from kivy.properties import ObjectProperty
 # from kivy.uix.boxlayout import BoxLayout
 
@@ -55,6 +53,8 @@ class ClockApp(App):
 
 
 def main():
+    from kivy.core.window import Window
+    from kivy.utils import get_color_from_hex
     Window.clearcolor = get_color_from_hex('#101216')
     ClockApp().run()
 
