@@ -1,10 +1,10 @@
+from time import strftime
+
 from kivy.app import App
 from kivy.clock import Clock
 from kivy.core.text import LabelBase
 # from kivy.properties import ObjectProperty
 # from kivy.uix.boxlayout import BoxLayout
-
-from time import strftime
 
 LabelBase.register(
     name='Roboto',
@@ -55,7 +55,9 @@ class ClockApp(App):
 def main():
     from kivy.core.window import Window
     from kivy.utils import get_color_from_hex
+
     Window.clearcolor = get_color_from_hex('#101216')
+
     ClockApp().run()
 
 
