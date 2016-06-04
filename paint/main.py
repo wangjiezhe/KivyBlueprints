@@ -4,6 +4,8 @@ from kivy.base import EventLoop
 from kivy.utils import get_color_from_hex
 from kivy.config import Config
 from kivy.graphics import Color, Line
+from kivy.uix.behaviors import ToggleButtonBehavior
+from kivy.uix.togglebutton import ToggleButton
 
 
 CURSOR = (
@@ -40,7 +42,6 @@ class CanvasWidget(Widget):
         if Widget.on_touch_down(self, touch):
             return
         with self.canvas:
-            Color(*get_color_from_hex('#0080FF80'))
             touch.ud['current_line'] = Line(points=(touch.x, touch.y), width=2)
 
     def on_touch_move(self, touch):
@@ -55,6 +56,18 @@ class CanvasWidget(Widget):
         self.canvas.clear()
         for widget in saved:
             self.add_widget(widget)
+        self.set_color(self.last_color)
+
+    def set_color(self, new_color):
+        self.last_color = new_color
+        self.canvas.add(Color(*new_color))
+
+
+class RadioButton(ToggleButton):
+
+    def _do_press(self):
+        if self.state == 'normal':
+            ToggleButtonBehavior._do_press(self)
 
 
 class PaintApp(App):
@@ -69,7 +82,10 @@ class PaintApp(App):
                 mouse.set_cursor((24, 24), (9, 9), a, b)
             except:
                 pass
-        return CanvasWidget()
+
+        self.canvas_widget = CanvasWidget()
+        self.canvas_widget.set_color(get_color_from_hex('#2980B9'))
+        return self.canvas_widget
 
 
 def main():

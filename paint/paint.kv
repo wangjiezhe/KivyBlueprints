@@ -1,3 +1,4 @@
+#:import C kivy.utils.get_color_from_hex
 <CanvasWidget>:
     Button:
         text: 'Delete'
@@ -6,3 +7,29 @@
         width: 80
         height: 40
         on_release: root.clear_canvas()
+
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 3
+        spacing: 3
+        x: 0
+        y: 0
+        width: root.width
+        height: 40
+
+        ColorButton:
+            background_color: C('#2980B9')
+            state: 'down'
+
+        ColorButton:
+            background_color: C('#16A085')
+
+        ColorButton:
+            background_color: C('#27AE60')
+
+<ColorButton@RadioButton>:
+    group: 'color'
+    on_release: app.canvas_widget.set_color(self.background_color)
+    background_normal: 'pics/color_button_normal.png'
+    background_down: 'pics/color_button_down.png'
+    border: (3, 3, 3, 3)
