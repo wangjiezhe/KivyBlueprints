@@ -1,0 +1,3 @@
+title=Paint App
+author=Jiezhe Wang
+orientation=landscape
