@@ -27,9 +27,36 @@
         ColorButton:
             background_color: C('#27AE60')
 
-<ColorButton@RadioButton>:
-    group: 'color'
-    on_release: app.canvas_widget.set_color(self.background_color)
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 2
+        spacing: 2
+        x: 0
+        top: root.top
+        width: 80
+        height: 110
+
+        LineWidthButton:
+            text: 'Thin'
+
+        LineWidthButton:
+            text: 'Normal'
+            state: 'down'
+
+        LineWidthButton:
+            text: 'Thick'
+
+<RadioButton>:
     background_normal: 'pics/color_button_normal.png'
     background_down: 'pics/color_button_down.png'
     border: (3, 3, 3, 3)
+
+<ColorButton@RadioButton>:
+    group: 'color'
+    on_release: app.canvas_widget.set_color(self.background_color)
+
+<LineWidthButton@RadioButton>:
+    group: 'line_width'
+    on_release: app.canvas_widget.set_line_width(self.text)
+    color: C('#2C3E50')
+    background_color: C('#ECF0F1')

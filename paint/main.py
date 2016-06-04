@@ -38,11 +38,16 @@ CURSOR = (
 
 class CanvasWidget(Widget):
 
+    line_width = 2
+
     def on_touch_down(self, touch):
         if Widget.on_touch_down(self, touch):
             return
         with self.canvas:
-            touch.ud['current_line'] = Line(points=(touch.x, touch.y), width=2)
+            touch.ud['current_line'] = Line(
+                points=(touch.x, touch.y),
+                width=self.line_width
+            )
 
     def on_touch_move(self, touch):
         if 'current_line' in touch.ud:
@@ -61,6 +66,11 @@ class CanvasWidget(Widget):
     def set_color(self, new_color):
         self.last_color = new_color
         self.canvas.add(Color(*new_color))
+
+    def set_line_width(self, line_width='Normal'):
+        self.line_width = {
+            'Thin': 1, 'Normal': 2, 'Thick': 4
+        }[line_width]
 
 
 class RadioButton(ToggleButton):
