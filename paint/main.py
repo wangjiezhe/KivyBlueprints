@@ -41,7 +41,11 @@ class CanvasWidget(Widget):
             return
         with self.canvas:
             Color(*get_color_from_hex('#0080FF80'))
-            Line(circle=(touch.x, touch.y, 25), width=4)
+            touch.ud['current_line'] = Line(points=(touch.x, touch.y), width=2)
+
+    def on_touch_move(self, touch):
+        if 'current_line' in touch.ud:
+            touch.ud['current_line'].points += (touch.x, touch.y)
 
     def clear_canvas(self):
         # self.canvas.clear()
