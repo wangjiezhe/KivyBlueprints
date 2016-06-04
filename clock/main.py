@@ -3,14 +3,9 @@ from time import strftime
 from kivy.app import App
 from kivy.clock import Clock
 from kivy.core.text import LabelBase
+from kivy.utils import get_color_from_hex
 # from kivy.properties import ObjectProperty
 # from kivy.uix.boxlayout import BoxLayout
-
-LabelBase.register(
-    name='Roboto',
-    fn_regular='fonts/Roboto-Thin.ttf',
-    fn_bold='fonts/Roboto-Medium.ttf'
-)
 
 
 # class ClockLayout(BoxLayout):
@@ -54,9 +49,13 @@ class ClockApp(App):
 
 def main():
     from kivy.core.window import Window
-    from kivy.utils import get_color_from_hex
 
     Window.clearcolor = get_color_from_hex('#101216')
+    LabelBase.register(
+        name='Roboto',
+        fn_regular='fonts/Roboto-Thin.ttf',
+        fn_bold='fonts/Roboto-Medium.ttf'
+    )
 
     ClockApp().run()
 
