@@ -4,13 +4,12 @@
         text: 'Delete'
         right: root.right
         top: root.top
-        width: 80
-        height: 40
+        width: 160
+        height: 80
         on_release: root.clear_canvas()
         background_normal: 'pics/red_button_normal.png'
         background_down: 'pics/red_button_down.png'
         border: (2, 2, 2, 2)
-        font_size: 20
 
     BoxLayout:
         orientation: 'horizontal'
@@ -19,7 +18,7 @@
         x: 0
         y: 0
         width: root.width
-        height: 40
+        height: 80
 
         ColorButton:
             background_color: C('#2980B9')
@@ -37,8 +36,8 @@
         spacing: 2
         x: 0
         top: root.top
-        width: 80
-        height: 110
+        width: 160
+        height: 250
 
         LineWidthButton:
             text: 'Thin'
