@@ -3,6 +3,7 @@ from kivy.uix.widget import Widget
 from kivy.base import EventLoop
 from kivy.utils import get_color_from_hex
 from kivy.config import Config
+from kivy.graphics import Color, Line
 
 
 CURSOR = (
@@ -34,7 +35,11 @@ CURSOR = (
 
 
 class CanvasWidget(Widget):
-    pass
+
+    def on_touch_down(self, touch):
+        with self.canvas:
+            Color(*get_color_from_hex('#0080FF80'))
+            Line(circle=(touch.x, touch.y, 25), width=4)
 
 
 class PaintApp(App):
