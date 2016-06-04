@@ -37,9 +37,20 @@ CURSOR = (
 class CanvasWidget(Widget):
 
     def on_touch_down(self, touch):
+        if Widget.on_touch_down(self, touch):
+            return
         with self.canvas:
             Color(*get_color_from_hex('#0080FF80'))
             Line(circle=(touch.x, touch.y, 25), width=4)
+
+    def clear_canvas(self):
+        # self.canvas.clear()
+        # self.canvas.children = [widget.canvas for widget in self.children]
+        saved = self.children[:]
+        self.clear_widgets()
+        self.canvas.clear()
+        for widget in saved:
+            self.add_widget(widget)
 
 
 class PaintApp(App):
