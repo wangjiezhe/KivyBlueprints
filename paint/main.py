@@ -1,3 +1,5 @@
+# pylint: disable=attribute-defined-outside-init,too-many-ancestors
+
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.base import EventLoop
@@ -90,7 +92,7 @@ class PaintApp(App):
                 from pygame import cursors
                 a, b = cursors.compile(CURSOR, black='@', white='-')
                 mouse.set_cursor((24, 24), (9, 9), a, b)
-            except:
+            except ImportError:
                 pass
 
         self.canvas_widget = CanvasWidget()
